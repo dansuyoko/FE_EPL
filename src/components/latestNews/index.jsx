@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import './style.scss';
 import img2 from '../../assets/img/img2.jpg';
 import axios from "axios";
-const db = require('../../db.json')
+// const db = require('../../db.json')
 
 export default function LatestNews() {
     const [data, setData] = useState([]);
@@ -31,7 +31,7 @@ export default function LatestNews() {
                 {data.slice(0, 4).map((d) => (
                     <a href={`/news/${d._id}`} className="col latest-news-link" key={d._id}>
                         <div className="latest-news-img shadow">
-                            <img src={img2} alt="epl news" loading={"lazy"} />
+                            <img src={`http://localhost:8000/${d.image}`} alt="epl news" loading={"lazy"} />
                         </div>
                         <div className="pt-1">{d.title}</div>
                     </a>

@@ -5,20 +5,20 @@ import './style.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Button, Input } from "reactstrap";
-const db = require('../../db.json')
+// const db = require('../../db.json')
 
 export default function Navbar({handleHome, handleClub, handleCategory}) {
     const [club, setClub] = useState([]);
-    const getClub = () => {
-        setClub(db.clubs)
-    };
-    const category = [];
-    db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
+    // const getClub = () => {
+    //     setClub(db.clubs)
+    // };
+    // const category = [];
+    // db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
     
     useEffect(() => {
-        getClub();
+        // getClub();
     }, []);
-    console.log(category);
+    // console.log(category);
     return (
         <>
         <header className="navigation-bar">
@@ -30,7 +30,7 @@ export default function Navbar({handleHome, handleClub, handleCategory}) {
             
                     <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="/" className="nav-link px-2 text-white">Home</a></li>
-                        <li><a href="#" className="nav-link px-2 text-white">Club</a></li>
+                        <li><a href="/club" className="nav-link px-2 text-white">Club</a></li>
                         <li><a href="/categories" className="nav-link px-2 text-white">Category</a></li>
                         <li><a href="#" className="nav-link px-2 text-white">About</a></li>
                     </ul>

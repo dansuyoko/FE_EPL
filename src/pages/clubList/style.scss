@@ -6,44 +6,41 @@ $box-shadow:  0 .5rem 1.5rem rgba(0,0,0,.1);
 $sidebar-shadow:  0 .5rem 1.5rem rgba(0,0,0,.1);
 
 
-.latest-news-section{
+.club-list-section{
     margin: 10px 10px 10px 6%;
     max-width: 100%;
     a{
         text-decoration: none;
         color: black;
         &:hover{
-            .latest-news-title{
+            .club-list-title{
                 text-decoration-line: underline;
                 color: black;
             }
-            .latest-news-content{
+            .club-list-content{
                 color: black;
             }
         }
     }
-    .latest-news-headline{
-        .latest-news-title{
-            margin: 0;
-        }
-        .latest-news-content{
-            margin: 0;
-        }
+    .club-list-headline{
+        display: flex;
+        align-items: center;
 
     }
-    .latest-news-body{
+    .club-list-body{
         margin-top: 10px;
         margin-bottom: 40px;
         text-align: justify;
-        .latest-news-pict-div{
+        .club-list-pict-div{
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 150px;
+            height: 100px;
+            width: fit-content;
             margin-bottom: 10px;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
             overflow: hidden;
-            .latest-news-pict{
+            .club-list-pict{
+                height: 100%;
                 object-fit: cover;
             }
         }

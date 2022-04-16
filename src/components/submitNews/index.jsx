@@ -10,13 +10,13 @@ export default function SubmitNews() {
     const getClub = () => {
         setClub(db.clubs)
     };
-    const category = [];
-    db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
+    // const category = [];
+    // db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
     
     useEffect(() => {
         getClub();
     }, []);
-    console.log(category);
+    // console.log(category);
     return (
         <>
             <section className="px-4 py-5 submit-section">

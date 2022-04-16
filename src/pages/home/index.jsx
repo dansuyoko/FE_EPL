@@ -4,7 +4,6 @@ import './style.scss'
 import { Button, Card,CardImg, CardBody, CardTitle, CardText } from "reactstrap";
 import Navbar from "../../components/navbar";
 import img1 from '../../assets/img/img1.jpg'
-import axios from "axios";
 import SubmitNews from "../../components/submitNews";
 import LatestNews from "../../components/latestNews";
 import Clubs from "../../components/club";
@@ -36,7 +35,6 @@ export default function HomePage() {
                         lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
                     </p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-start home-btn">
-                        <a href="/explore-latest" className="btn btn-outline-secondary btn-dark btn-lg px-4 me-md-2">Explore latest</a>
                         <a href="/random-recipe" className="btn btn-outline-secondary btn-dark btn-lg px-4 me-md-2">Show Random</a>
                     </div>
                 </div>

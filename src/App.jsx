@@ -8,6 +8,9 @@ import LatestNewsPage from './pages/latestNews';
 import SubmitPage from './pages/submit';
 import DashboardPage from './pages/dashboard';
 import ClubNewsPage from './pages/clubNews';
+import CategoriesListPage from './pages/categoryList';
+import CategoryNewsPage from './pages/categoryNews';
+import ClubListPage from './pages/clubList';
 
 function App() {
   return (
@@ -18,12 +21,17 @@ function App() {
             <Route index element={<HomePage />} />
             
           </Route>
-          <Route path='/news' >
-            <Route path="club/:_id" element={<ClubNewsPage/>} />
-            <Route index element={<LatestNewsPage />} />
+          <Route path='/categories' >
+            <Route path=":category" element={<CategoryNewsPage/>} />
+            <Route index element={<CategoriesListPage />} />
           </Route>
-          <Route path='/news/:_id' >
-            <Route index element={<NewsPage />} />
+          <Route path='/club' >
+            <Route path=":club" element={<ClubNewsPage/>} />
+            <Route index element={<ClubListPage />} />
+          </Route>
+          <Route path='/news' >
+            <Route path=":_id" element={<NewsPage/>} />
+            <Route index element={<LatestNewsPage />} />
           </Route>
           <Route path='/login' element={<LoginPage/>} />
           <Route path='/register' element={<RegisterPage/>} />

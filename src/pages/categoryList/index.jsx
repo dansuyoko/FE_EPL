@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import './style.scss'
 import Navbar from "../../components/navbar";
+import img2 from '../../assets/img/img1.jpg'
 import axios from "axios";
 import MostViewedNews from "../../components/mostViewedNews";
 import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadcrumb";
 const db = require('../../db.json')
 
-export default function ClubNewsPage() {
+export default function CategoriesListPage() {
     const [data, setData] = useState([]);
     const [page, setPage] = useState("");
     const [club, setClub] = useState([]);
@@ -18,36 +19,33 @@ export default function ClubNewsPage() {
     // };
     const getData = async () => {
         const response = await axios.get('http://localhost:8000/news')
-        setData(response.data.filter(item => item.club.includes(`${params.club}`)).sort((a,b)=>{
-            return new Date(b.updatedAt) - new Date(a.updatedAt);
-        }));
+        setData(response.data);
     };
-    // const category = [];
-    // db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
+    const category = [];
+    data.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
     
     useEffect(() => {
         // getClub();
         getData();
-        setPage(`${params.club}`)
+        setPage("category")
     }, []);
-    console.log(data);
+    console.log(category);
     return(
         <div className="container-xxl px-md-5 bg-white shadow-lg home-page">
             < Navbar />
             < BreadCrumb 
                 page = {page}/>
-            <div className="col club-news-section">
+            <div className="col categories-list-section">
                 <div className="row">
                     <div className="col-md-8 left-col">
-                        {data.map((d) => (
-                            <a href={`/news/${d._id}`} key={d._id}>
-                                <div className="row club-news-body">
-                                    <div className="col-md-4 club-news-pict-div">
-                                        <img src={`http://localhost:8000/${d.image}`} alt="img" className="club-news-pict"/>
+                        {category.map((d, idx) => (
+                            <a href={`/categories/${d}`} key={idx}>
+                                <div className="row categories-list-body">
+                                    <div className="col-md-4 categories-list-pict-div">
+                                        <img src={img2} alt="img" className="categories-list-pict"/>
                                     </div>
-                                    <div className="col-md-8 club-news-headline">
-                                        <h3 className="club-news-title">{d.title}</h3>
-                                        <p className="club-news-content">{`${d.body.substring(0,250)}. . .`}</p>
+                                    <div className="col-md-8 categories-list-headline">
+                                        <h3 className="categories-list-title">{d}</h3>
                                     </div>
                                 </div>
                             </a>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import './style.scss'
 import axios from "axios";
-const db = require('../../db.json')
+// const db = require('../../db.json')
 
 export default function Clubs() {
     const [data, setData] = useState([]);
@@ -22,11 +22,11 @@ export default function Clubs() {
         <>
             <section className="pb-4 pt-4">
                 <div className="d-flex mb-2 clubs-header">
-                    <h2>CLUBS</h2>
+                    <h2>clubs</h2>
                 </div>
                 <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                     {data.map((d) => (
-                        <a href={`/news/club/${d._id}`}className="col text-center clubs-link" key={d._id}>
+                        <a href={`/club/${d.name}`}className="col text-center clubs-link" key={d._id}>
                             <div className="clubs-img">
                                 <img src={`${d.logo}`} alt="" loading={"lazy"} />
                             </div>

@@ -10,7 +10,6 @@ export default function SubmitPage() {
     const params = useParams();
     const [data, setData] = useState([]);
     const [club, setClub] = useState([]);
-    console.log(params);
 
 
     // const getClub = () => {
@@ -24,14 +23,13 @@ export default function SubmitPage() {
         const response = await axios.get(`http://localhost:8000/news/${params._id}`)
         setData(response.data);
     };
-    const id = params._id
     const initialFormValue = {
         image: "",
         title: "",
         body: "",
         category: "",
         club: "",
-        createdBy: id
+        createdBy: params._id
     };
 
     const [form, setForm] = useState(initialFormValue);
