@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 
 import './style.scss'
-import img3 from '../../assets/img/img3.jpg'
 import axios from "axios";
 const db = require('../../db.json')
 
@@ -27,7 +26,7 @@ export default function Clubs() {
                 </div>
                 <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                     {data.map((d) => (
-                        <a href={`/news/${d._id}`}className="col text-center clubs-link" key={d._id}>
+                        <a href={`/news/club/${d._id}`}className="col text-center clubs-link" key={d._id}>
                             <div className="clubs-img">
                                 <img src={`${d.logo}`} alt="" loading={"lazy"} />
                             </div>

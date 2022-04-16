@@ -18,19 +18,19 @@ const validationSchema = yup.object().shape({
 export default function RegisterPage() {
     const handleRegister = async (e) => {
         const {id, join_date, email, username, address, phone_number, password} = formik.values;
-        await axios.post('http://localhost:8080/register', {
-            id,
-            join_date,
-            email,
-            username,
-            address,
-            phone_number,
-            password
-        })
-            .then(() => {
-                window.location = '/'
-            })
-            .catch((err) => console.error(err));
+        // await axios.post('http://localhost:8080/register', {
+        //     id,
+        //     join_date,
+        //     email,
+        //     username,
+        //     address,
+        //     phone_number,
+        //     password
+        // })
+        //     .then(() => {
+        //         window.location = '/'
+        //     })
+        //     .catch((err) => console.error(err));
     };
     const formik = useFormik({
         initialValues: {

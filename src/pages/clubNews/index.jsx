@@ -7,7 +7,7 @@ import axios from "axios";
 import MostViewedNews from "../../components/mostViewedNews";
 const db = require('../../db.json')
 
-export default function LatestNewsPage() {
+export default function ClubNewsPage() {
     const [data, setData] = useState([]);
     const [club, setClub] = useState([]);
     // const getClub = () => {
@@ -29,7 +29,7 @@ export default function LatestNewsPage() {
     return(
         <div className="container-xxl px-md-5 bg-white shadow-lg home-page">
             < Navbar />
-            <div className="col latest-news-section">
+            <div className="col club-news-section">
                 <div className="row">
                     <div className="col-md-8 left-col">
                         {data.map((d) => (
