@@ -40,7 +40,7 @@ export default function Navbar({ handleHome, handleClub, handleCategory }) {
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link px-2 text-white">
+                <a href="/club" className="nav-link px-2 text-white">
                   Club
                 </a>
               </li>

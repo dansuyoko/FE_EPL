@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import './style.scss'
 import { Button, Card,CardImg, CardBody, CardTitle, CardText } from "reactstrap";
 import Navbar from "../../components/navbar";
-import img1 from '../../assets/img/img1.jpg'
-import SubmitNews from "../../components/submitNews";
+import header from '../../assets/img/EPL.png';
 import LatestNews from "../../components/latestNews";
 import Clubs from "../../components/club";
 const db = require('../../db.json')
@@ -27,7 +26,7 @@ export default function HomePage() {
             < Navbar />
             <div className="row home-layout">
                 <div className="col-12 col-lg-6">
-                    <img src={img1} alt="" srcSet="" className="d-block mx-lg-auto img-fluid"/>
+                    <img src={header} alt="" srcSet="" className="d-block mx-lg-auto img-fluid"/>
                 </div>
                 <div className="col-12 col-lg-6">
                     <h1 className="display-5 fw-bold mb-3">EPL News Update</h1>
@@ -41,7 +40,6 @@ export default function HomePage() {
             </div>
             <LatestNews />
             <Clubs />
-            <SubmitNews />
         </div>
     )
 }

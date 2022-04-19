@@ -47,7 +47,7 @@ export default function ClubNewsPage() {
                                     </div>
                                     <div className="col-md-8 club-news-headline">
                                         <h3 className="club-news-title">{d.title}</h3>
-                                        <p className="club-news-content">{`${d.body.substring(0,250)}. . .`}</p>
+                                        <p className="club-news-content">{d.body.length > 250 ? `${d.body.substring(0,250)}. . .` : d.body}</p>
                                     </div>
                                 </div>
                             </a>

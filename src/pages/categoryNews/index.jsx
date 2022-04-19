@@ -42,7 +42,7 @@ export default function CategoryNewsPage() {
                                     </div>
                                     <div className="col-md-8 category-news-headline">
                                         <h3 className="category-news-title">{d.title}</h3>
-                                        <p className="category-news-content">{`${d.body.substring(0,250)}. . .`}</p>
+                                        <p className="category-news-content">{d.body.length > 250 ? `${d.body.substring(0,250)}. . .` : d.body}</p>
                                     </div>
                                 </div>
                             </a>

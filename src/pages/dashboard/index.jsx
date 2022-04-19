@@ -62,10 +62,10 @@ export default function DashboardPage() {
                                     <th scope = "row">
                                         {idx + 1}
                                     </th>
-                                    <td>{d.title}</td>
-                                    <td>{d.body.length > 100 ? `${d.body.substring(0,25)}. . .` : d.body}</td>
-                                    <td>{d.category.length > 1 ? d.category.join(", ") : d.category}</td>
-                                    <td>{d.club.length > 1 ? d.club.join(", ") : d.club}</td>
+                                        <td><a href={`/news/${d._id}`} target="_blank" rel="noopener noreferrer">{d.title}</a></td>
+                                        <td>{d.body.length > 100 ? `${d.body.substring(0,25)}. . .` : d.body}</td>
+                                        <td>{d.category.length > 1 ? d.category.join(", ") : d.category}</td>
+                                        <td>{d.club.length > 1 ? d.club.join(", ") : d.club}</td>
                                     <td>
 
                                         <Button className="action-button" size="sm" color="danger" onClick={() => window.confirm("Are you sure?")? handleDelete(d._id) : null}>Delete</Button>

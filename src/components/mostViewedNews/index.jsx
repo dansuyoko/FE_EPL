@@ -24,7 +24,7 @@ export default function MostViewedNews() {
                     <div className="row most-viewed-body">
                         <div className="col most-viewed-headline">
                             <h4 className="most-viewed-title">{d.title}</h4>
-                            <p className="most-viewed-content">{`${d.body.substring(0,50)}. . .`}</p>
+                            <p className="most-viewed-content">{d.body.length > 50 ? `${d.body.substring(0,50)}. . .` : d.body}</p>
                         </div>
                     </div>
                 </a>

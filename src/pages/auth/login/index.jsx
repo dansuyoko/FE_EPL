@@ -20,7 +20,7 @@ export default function LoginPage() {
           localStorage.setItem('access_token', res.data.accessToken);
           window.location = `/dashboard/${res.data._id}`;
         } else {
-          console.log('Some error while create user.');
+          alert("email or password is wrong!")
         }
       })
       .catch((err) => {

@@ -39,7 +39,7 @@ export default function LatestNewsPage() {
                                     </div>
                                     <div className="col-md-8 latest-news-headline">
                                         <h2 className="latest-news-title">{d.title}</h2>
-                                        <p className="latest-news-content">{`${d.body.substring(0,250)}. . .`}</p>
+                                        <p className="latest-news-content">{d.body.length > 250 ? `${d.body.substring(0,250)}. . .` : d.body}</p>
                                     </div>
                                 </div>
                             </a>
