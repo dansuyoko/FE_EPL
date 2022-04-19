@@ -18,16 +18,10 @@ export default function DashboardPage() {
     const [modalVisible, setModalVisible] = useState(false);
     const [updatedId, setUpdatedId] = useState(null);
     const handleCreate = () => {
-        setAction("create");
-        setModalVisible(true);
-    };
-    const handleEdit = (_id) => {
-        setUpdatedId(_id);
-        setAction("edit");
-        setModalVisible("true")
+        window.location = `/submit/${params._id}`
     };
     const handleDelete = async (_id) => {
-        await axios.delete(`http://localhost:8000/news/${params._id}`)
+        await axios.delete(`http://localhost:8000/news/${_id}`)
             .then(() =>{
                 const updatedData = data.filter(v => v._id !== _id);
                 setData(updatedData);
@@ -39,6 +33,7 @@ export default function DashboardPage() {
         setData(response.data.sort((a,b)=>{
             return new Date(b.updatedAt) - new Date(a.updatedAt);
         }));
+
     };
 
     useEffect(() => {
@@ -72,7 +67,7 @@ export default function DashboardPage() {
                                     <td>{d.category.length > 1 ? d.category.join(", ") : d.category}</td>
                                     <td>{d.club.length > 1 ? d.club.join(", ") : d.club}</td>
                                     <td>
-                                        <Button className="action-button" size="sm" onClick={() => handleEdit(d._id)}>Edit</Button>
+
                                         <Button className="action-button" size="sm" color="danger" onClick={() => window.confirm("Are you sure?")? handleDelete(d._id) : null}>Delete</Button>
                                     </td>
                                 </tr>
