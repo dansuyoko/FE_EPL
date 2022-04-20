@@ -17,8 +17,8 @@ export default function LoginPage() {
       .post('http://localhost:8000/login', data)
       .then((res) => {
         if (res.data) {
-          localStorage.setItem('access_token', res.data.accessToken);
-          window.location = `/dashboard/${res.data._id}`;
+          localStorage.setItem('access_token', res.data.token);
+          window.location = `/dashboard/${res.data.payload._id}`;
         } else {
           alert("email or password is wrong!")
         }

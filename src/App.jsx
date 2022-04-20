@@ -12,6 +12,14 @@ import CategoriesListPage from './pages/categoryList';
 import CategoryNewsPage from './pages/categoryNews';
 import ClubListPage from './pages/clubList';
 
+const RequiredAuth = () => {
+  let isAuth = localStorage.getItem('access_token')
+  if (!isAuth) {
+    return <Navigate to="/"/>
+  }
+  return <Outlet/>
+}
+
 function App() {
   return (
     <>
@@ -19,7 +27,6 @@ function App() {
         <Routes>
           <Route path='/' >
             <Route index element={<HomePage />} />
-            
           </Route>
           <Route path='/categories' >
             <Route path=":category" element={<CategoryNewsPage/>} />
@@ -35,11 +42,14 @@ function App() {
           </Route>
           <Route path='/login' element={<LoginPage/>} />
           <Route path='/register' element={<RegisterPage/>} />
-          <Route path='/submit/:_id' >
-            <Route index element={<SubmitPage />} />
-          </Route>
-          <Route path='/dashboard/:_id' >
-            <Route index element={<DashboardPage />} />
+
+          <Route element={<RequiredAuth/>}>
+            <Route path='/dashboard/:_id' >
+              <Route index element={<DashboardPage />} />
+            </Route>
+            <Route path='/submit/:_id' >
+              <Route index element={<SubmitPage />} />
+            </Route>
           </Route>
           
         </Routes>
