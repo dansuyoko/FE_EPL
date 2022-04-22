@@ -6,24 +6,17 @@ import axios from "axios";
 import MostViewedNews from "../../components/mostViewedNews";
 import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadcrumb";
-const db = require('../../db.json')
 
 export default function ClubNewsPage() {
     const [data, setData] = useState([]);
     const [page, setPage] = useState("");
-    const [club, setClub] = useState([]);
     const params = useParams();
-    // const getClub = () => {
-    //     setClub(db.clubs)
-    // };
     const getData = async () => {
         const response = await axios.get('http://localhost:8000/news')
         setData(response.data.filter(item => item.club.includes(`${params.club}`)).sort((a,b)=>{
             return new Date(b.updatedAt) - new Date(a.updatedAt);
         }));
     };
-    // const category = [];
-    // db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
     
     useEffect(() => {
         // getClub();

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 
-
 import './style.scss'
 import { Button, Table } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,9 +13,6 @@ export default function DashboardPage() {
     const params = useParams();
     const [header, setHeader] = useState([]);
     const [data, setData] = useState([]);
-    const [action, setAction] = useState(null);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [updatedId, setUpdatedId] = useState(null);
     const handleCreate = () => {
         window.location = `/submit/${params._id}`
     };
@@ -43,7 +39,7 @@ export default function DashboardPage() {
     }, []);
     console.log(data);
     return(
-        <div className="dashboard-body">
+        <div className="container-xxl px-md-5 bg-white shadow-lg dashboard-body">
             <Navbar/>
             <Button className="add-data-button" onClick={() => handleCreate()}><FontAwesomeIcon icon={faPlus}/></Button>
             <div className="col">

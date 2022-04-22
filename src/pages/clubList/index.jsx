@@ -2,26 +2,18 @@ import React, { useEffect, useState } from "react";
 
 import './style.scss'
 import Navbar from "../../components/navbar";
-import axios from "axios";
 import MostViewedNews from "../../components/mostViewedNews";
-import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadcrumb";
-const db = require('../../db.json')
+const clubs = require('../../clubs.json');
 
 export default function ClubListPage() {
     const [data, setData] = useState([]);
     const [page, setPage] = useState("");
-    const [club, setClub] = useState([]);
-    const params = useParams();
-    // const getClub = () => {
-    //     setClub(db.clubs)
-    // };
-    const getData = async () => {
-        const response = await axios.get('http://localhost:8000/club')
-        setData(response.data);
+    
+    const getData = () => {
+        setData(clubs.clubs)
     };
     useEffect(() => {
-        // getClub();
         getData();
         setPage("club")
     }, []);

@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
 
 import './style.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Button, Input } from 'reactstrap';
-const db = require('../../db.json');
+const clubs = require('../../clubs.json');
 
-export default function Navbar({ handleHome, handleClub, handleCategory }) {
+export default function Navbar() {
   const [club, setClub] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(true);
   const getClub = () => {
-    setClub(db.clubs);
+    setClub(clubs.clubs);
   };
   const category = [];
-  db.news.map((d) =>
-    d.category.map((dd) => {
-      if (!category.includes(dd)) {
-        category.push(dd);
-      }
-    })
-  );
-
+  // db.news.map((d) =>
+  //   d.category.map((dd) => {
+  //     if (!category.includes(dd)) {
+  //       category.push(dd);
+  //     }
+  //   })
+  // );
+  const RequiredAuth = () => {
+    let isAuth = localStorage.getItem('access_token')
+    if (!isAuth) {
+      setLoggedIn(false)
+    }
+  }
+  const logOut = () => {
+    localStorage.clear();
+    window.location = `/`
+  };
   useEffect(() => {
     getClub();
+    RequiredAuth();
   }, []);
   console.log(category);
   return (
@@ -61,16 +69,8 @@ export default function Navbar({ handleHome, handleClub, handleCategory }) {
             </form>
 
             <div className="text-end">
-              <a href="/login">
-                <button type="button" className="btn btn-outline-light me-2">
-                  Login
-                </button>
-              </a>
-              <a href="/register">
-                <button type="button" className="btn btn-warning">
-                  Sign-up
-                </button>
-              </a>
+              {loggedIn && (<a className="btn btn-light me-2" onClick={() => {logOut()}}>Logout</a>)}
+              {!loggedIn && (<a className="btn btn-light me-2" href='/login'>Login</a>)}
             </div>
           </div>
         </div>

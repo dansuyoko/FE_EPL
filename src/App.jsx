@@ -15,7 +15,7 @@ import ClubListPage from './pages/clubList';
 const RequiredAuth = () => {
   let isAuth = localStorage.getItem('access_token')
   if (!isAuth) {
-    return <Navigate to="/"/>
+    return <Navigate to="/login"/>
   }
   return <Outlet/>
 }

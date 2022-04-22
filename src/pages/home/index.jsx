@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 import './style.scss'
-import { Button, Card,CardImg, CardBody, CardTitle, CardText } from "reactstrap";
 import Navbar from "../../components/navbar";
 import header from '../../assets/img/EPL.png';
 import LatestNews from "../../components/latestNews";
 import Clubs from "../../components/club";
-const db = require('../../db.json')
+const clubs = require('../../clubs.json')
 
 export default function HomePage() {
     const [data, setData] = useState([]);
     const getData = () => {
-        setData(db.clubs)
+        setData(clubs.clubs)
     };
-    // const getData = async () => {
-    //     const response = await axios.get('http://localhost:8000/club')
-    //         setData(response.data);
-    // };
     
     useEffect(() => {
         getData();

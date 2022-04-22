@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import './style.scss';
-import { Button, FormFeedback, Input } from 'reactstrap';
+import { Alert, Button, FormFeedback, Input } from 'reactstrap';
 
 const validationSchema = yup.object().shape({
   email: yup.string().email().required('Email salah'),
@@ -25,8 +25,11 @@ export default function RegisterPage() {
         phone_number,
         password,
       })
-      .then(() => {
-        window.location = '/login';
+      .then((res) => {
+        if (res.data.message != null) {
+          setMessage(res.data.message);
+        }
+        else{window.location = '/login';}
       })
       .catch((err) => console.error(err));
   };
@@ -43,6 +46,7 @@ export default function RegisterPage() {
     onSubmit: () => handleRegister(),
   });
   const [formRegister, setFormRegister] = useState(formik.initialValues);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const formInput = Object.assign({}, formik.initialValues);
@@ -53,6 +57,7 @@ export default function RegisterPage() {
       <form className="form-container" onSubmit={formik.handleSubmit}>
         <h1 className="title">Register</h1>
         <p className="desc">Welcome to Mydashboard</p>
+        {message !== '' ? <Alert color='danger'>{message}</Alert> : null}
         {Object.keys(formRegister).map((key, idx) => (
           <div key={idx} className="row-input">
             <Input

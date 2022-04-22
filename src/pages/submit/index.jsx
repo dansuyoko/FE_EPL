@@ -4,7 +4,7 @@ import axios from "axios";
 import './style.scss'
 import { Button, Form, Label, Input } from "reactstrap";
 import { useParams } from "react-router-dom";
-const db = require('../../db.json')
+const clubs = require('../../clubs.json')
 
 export default function SubmitPage() {
     const params = useParams();
@@ -12,12 +12,8 @@ export default function SubmitPage() {
     const [club, setClub] = useState([]);
 
 
-    // const getClub = () => {
-    //     setClub(db.clubs)
-    // };
-    const getClub = async () => {
-        const response = await axios.get('http://localhost:8000/club')
-        setClub(response.data);
+    const getClub = () => {
+        setClub(clubs.clubs)
     };
     const getData = async () => {
         const response = await axios.get(`http://localhost:8000/news/${params._id}`)
@@ -40,7 +36,6 @@ export default function SubmitPage() {
     }, [data]);
 
     const createData = async () => {
-        console.log(form);
         let formData = new FormData();
         formData.append('image', form.image);
         formData.append('title', form.title);
@@ -54,7 +49,7 @@ export default function SubmitPage() {
             },
         })
             .then((res) => {
-                data.push(form)
+                window.location = `/news/${res.data._id}`;
             })
             .catch((err) => console.error(err));
     };

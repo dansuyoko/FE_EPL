@@ -4,25 +4,16 @@ import './style.scss'
 import Navbar from "../../components/navbar";
 import axios from "axios";
 import MostViewedNews from "../../components/mostViewedNews";
-const db = require('../../db.json')
 
 export default function LatestNewsPage() {
     const [data, setData] = useState([]);
-    const [club, setClub] = useState([]);
-    // const getClub = () => {
-    //     setClub(db.clubs)
-    // };
     const getData = async () => {
         const response = await axios.get('http://localhost:8000/news')
         setData(response.data.sort((a,b)=>{
             return new Date(b.updatedAt) - new Date(a.updatedAt);
         }));
     };
-    // const category = [];
-    // db.news.map((d) => d.category.map((dd) => {if (!category.includes(dd)){category.push(dd)}}))
-    
     useEffect(() => {
-        // getClub();
         getData();
     }, []);
     return(

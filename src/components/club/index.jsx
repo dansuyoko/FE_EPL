@@ -2,18 +2,12 @@
 import React, { useEffect, useState } from "react";
 
 import './style.scss'
-import axios from "axios";
-// const db = require('../../db.json')
+const clubs = require('../../clubs.json');
 
 export default function Clubs() {
     const [data, setData] = useState([]);
-    const [club, setClub] = useState([]);
-    // const getClub = () => {
-    //     setClub(db.clubs)
-    // };
-    const getData = async () => {
-        const response = await axios.get('http://localhost:8000/club')
-            setData(response.data);
+    const getData = () => {
+        setData(clubs.clubs)
     };
     useEffect(() => {
         getData();
